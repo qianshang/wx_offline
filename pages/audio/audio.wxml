@@ -1,0 +1,5 @@
+<!--pages/audio/audio.wxml-->
+
+<view wx:for="{{audios}}">
+    <audio name="{{item.name}}" author="Peter" src="{{item.url}}" id="myAudio" controls class='audio-container'></audio>
+</view>

@@ -1,0 +1,15 @@
+<!--pages/articles/articles.wxml-->
+
+<view wx:for="{{articles}}">
+  <view class='article-container' bindtap='onArticleClick' data-item='{{item}}'>
+    <image src='{{item.img}}' class='article-image' />
+    <view class='article-content'>
+      <view class='article-title'>
+        {{item.title}}
+      </view>
+      <view class='article-description'>
+        {{item.description}}
+      </view>
+    </view>
+  </view>
+</view>

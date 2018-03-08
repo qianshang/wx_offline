@@ -1,0 +1,8 @@
+<!--pages/video/video.wxml-->
+<view wx:for="{{videos}}">
+  <view class='video-container'>
+    <video src='{{item.url}}' style='width: 100%;'></video>
+    <text>{{item.name}}</text>
+    <text>{{item.description}}</text>
+  </view>
+</view>

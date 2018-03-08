@@ -1,0 +1,70 @@
+/**index.wxss**/
+
+page {
+  height: 100%;
+}
+
+.container {
+  /* background-color: #F0F8FF; */
+  background-color: lightgray;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.container-logined {
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+  right: 0rpx;
+  border: 0rpx;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+  width: 100%;
+  background-color: yellow;
+  margin-bottom: 20rpx;
+}
+
+
+input {
+  width: 670rpx;
+  height: 88rpx;
+  border-radius: 88rpx;
+  background-color: rgba(255, 255, 255, 0.4);
+  /* padding-left: 22rpx; */
+}
+
+
+.login-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login-icon {
+  width: 350rpx;
+  height: 180rpx;
+}
+.login-mobile {
+  margin-top: 30rpx;
+}
+.login-password {
+  margin-top: 30rpx;
+}
+
+.login-submit {
+  margin-top: 30rpx;
+  width: 670rpx;
+  height: 88rpx;
+  border-radius: 88rpx;
+  font-size: 36rpx;
+}

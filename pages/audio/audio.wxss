@@ -1,0 +1,11 @@
+/* pages/audio/audio.wxss */
+page {
+  width: 100%;
+}
+.audio-container {
+  width: 100%;
+  background-color: #efefef;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+}

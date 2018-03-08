@@ -1,0 +1,28 @@
+<!--index.wxml-->
+<view class="container">
+  <view wx:if="{{isLogined}}" class='container-logined'>
+    <view class="userinfo">
+      <image style='width: 60px; height: 60px;' src="http://hq-static.smartstudy.com{{userInfo.avatar}}" bindtap='previewImage' data-imageurl='http://hq-static.smartstudy.com{{userInfo.avatar}}' />
+      <view style='display: flex; flex-direction: column; justify-content: space-between; padding: 10rpx;'>
+        <text>{{userInfo.chineseName}}</text>
+        <text>{{userInfo.englishName}}</text>
+      </view>
+    </view>
+
+    <!-- <navigator url='../course/course' hover-class="navigator-hover">
+      课程
+    </navigator> -->
+    <button bindtap='bindCourse'>课程</button>
+    <button bindtap='bindMediaVideo'>视频</button>
+    <button bindtap='bindMediaAudio'>音频</button>
+    <button bindtap='bindArticles'>文章</button>
+  </view>
+
+  <view wx:else class='login-container'>
+    <image src='../../images/login/login_logo.png' class='login-icon' />
+    <input class='login-mobile' placeholder='请输入手机号码' type='phone' bindinput='bindMobile' value='{{mobile}}' />
+    <input class='login-password' placeholder='请输入密码' password type='text' bindinput='bindPassword' value='{{password}}' />
+
+    <button class='login-submit' type='primary' bindtap='onLogin' loading='{{isLogining}}'>登录</button>
+  </view>
+</view>

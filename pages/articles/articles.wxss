@@ -1,0 +1,46 @@
+/* pages/articles/articles.wxss */
+
+.article-container {
+  width: 735rpx;
+  height: 180rpx;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  border-bottom-style: solid;
+  border-bottom-color: #f2f2f2;
+  border-bottom-width: 2rpx;
+}
+
+.article-image {
+  width: 200rpx;
+  height: 140rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+}
+
+.article-content {
+  margin-left: 24rpx;
+  margin-top: 20rpx;
+  height: 140rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.article-title {
+  width: 486rpx;
+  height: 88rpx;
+  font-size: 32rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.article-description {
+   width: 486rpx; 
+  height: 36rpx;
+  font-size: 26rpx;
+  color: #666666;
+  overflow: hidden;
+   white-space: nowrap; 
+  text-overflow: ellipsis;
+}

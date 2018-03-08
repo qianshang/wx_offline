@@ -1,0 +1,12 @@
+/* pages/video/video.wxss */
+
+page {
+  width: 100%;
+}
+.video-container {
+  width: 100%;
+  background-color: #efefef;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
