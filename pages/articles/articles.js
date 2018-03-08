@@ -69,15 +69,18 @@ Page({
    * 获取数据
    */
   fetchData: function (page, refresh) {
+    wx.showNavigationBarLoading()
     var that = this
     network.fetchArticles(app.globalData.token, page, pageSize, '', (data) => {
       that.setData({
         articles: refresh ? data : that.data.articles.concat(data),
         isAllData: data.length < pageSize
       });
+      wx.hideNavigationBarLoading()
       wx.stopPullDownRefresh();
     }, (msg) => {
       console.log(msg);
+      wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();
     });
   },

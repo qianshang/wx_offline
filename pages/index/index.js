@@ -43,6 +43,10 @@ Page({
           userInfo: app.globalData.userInfo,
           isLogined: true
         });
+      } else {
+        wx.showToast({
+          title: msg
+        })
       }
     });
   },

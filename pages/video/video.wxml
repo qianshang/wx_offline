@@ -2,7 +2,7 @@
 <view wx:for="{{videos}}">
   <view class='video-container'>
     <video src='{{item.url}}' style='width: 100%;'></video>
-    <text>{{item.name}}</text>
-    <text>{{item.description}}</text>
+    <text class='video-name'>{{item.name}}</text>
+    <text class='video-description'>{{item.description}}</text>
   </view>
 </view>

@@ -1,22 +1,17 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
-		"es6": true,
-		"postcss": true,
-		"minified": true,
+		"urlCheck": false,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.9.91",
-<<<<<<< HEAD
 	"appid": "wxeb8cbe3caa944ebb",
 	"projectname": "wx_offline",
 	"isGameTourist": false,
-=======
-	"appid": "touristappid",
-	"projectname": "offline_wx",
->>>>>>> b443b855caa91ae8c3ee0fcfc168cb4e1a09ef00
 	"condition": {
 		"search": {
 			"current": -1,

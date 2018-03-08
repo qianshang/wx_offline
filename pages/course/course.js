@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    futureIsSelected: true
   },
 
   /**
@@ -62,5 +62,23 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  onFutureClick: function() {
+    if (this.data.futureIsSelected) {
+      return
+    }
+    this.setData({
+      futureIsSelected: true
+    })
+  },
+
+  onHistoryClick: function() {
+    if (!this.data.futureIsSelected) {
+      return
+    }
+    this.setData({
+      futureIsSelected: false
+    })
   }
 })

@@ -1,4 +1,5 @@
-const baseUrl = 'http://api.uskid.tech';
+// const baseUrl = 'http://api.uskid.tech';
+const baseUrl = 'http://api.uskid.com';
 
 function request(url, method, params, success, failure) {
   wx.request({

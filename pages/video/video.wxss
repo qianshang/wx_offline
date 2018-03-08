@@ -10,3 +10,11 @@ page {
   display: flex;
   flex-direction: column;
 }
+
+.video-name {
+  font-size: 40rpx;
+}
+
+.video-description {
+  font-size: 32rpx;
+}

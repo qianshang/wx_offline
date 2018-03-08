@@ -51,6 +51,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    wx.showNavigationBarLoading();
     var that = this
 
     network.fetchAudios(app.globalData.token, 1, 20, (data) => {
@@ -58,9 +59,11 @@ Page({
       that.setData({
         audios: data
       });
+      wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();
     }, (msg) => {
       console.log(msg);
+      wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();
     })
   },

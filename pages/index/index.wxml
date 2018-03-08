@@ -26,3 +26,12 @@
     <button class='login-submit' type='primary' bindtap='onLogin' loading='{{isLogining}}'>登录</button>
   </view>
 </view>
+
+
+
+<template name="interface">
+  <view>
+    <text> {{index}}: {{msg}} </text>
+    <text> Time: {{time}} </text>
+  </view>
+</template>

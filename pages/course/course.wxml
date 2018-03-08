@@ -1,2 +1,11 @@
 <!--pages/course/course.wxml-->
-<text>pages/course/course.wxml</text>
+
+<view class='container'>
+  <view class='course-menu'>
+    <view class="{{futureIsSelected ?'course-menu-item-selected':'course-menu-item-normal'}}" bindtap='onFutureClick'>未上课程</view>
+    <view class="{{futureIsSelected ?'course-menu-item-normal':'course-menu-item-selected'}}" bindtap='onHistoryClick'>已上课程</view>
+  </view>
+  <scroll-view class='course-container'>
+
+  </scroll-view>
+</view>
