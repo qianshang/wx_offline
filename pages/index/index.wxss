@@ -32,15 +32,15 @@ page {
   margin-bottom: 20rpx;
 }
 
-
 input {
-  width: 670rpx;
+  width: 626rpx;
   height: 88rpx;
   border-radius: 88rpx;
-  background-color: rgba(255, 255, 255, 0.4);
-  /* padding-left: 22rpx; */
+  /* background-color: rgba(255, 255, 255, 0.4); */
+  background-color: white;
+  padding-left: 22rpx;
+  padding-right: 22rpx;
 }
-
 
 .login-container {
   width: 100%;
@@ -50,13 +50,16 @@ input {
   justify-content: center;
   align-items: center;
 }
+
 .login-icon {
   width: 350rpx;
   height: 180rpx;
 }
+
 .login-mobile {
   margin-top: 30rpx;
 }
+
 .login-password {
   margin-top: 30rpx;
 }

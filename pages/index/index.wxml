@@ -29,7 +29,7 @@
 
 
 
-<template name="interface">
+<template name="input">
   <view>
     <text> {{index}}: {{msg}} </text>
     <text> Time: {{time}} </text>

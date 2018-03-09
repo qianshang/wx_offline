@@ -12,7 +12,7 @@ App({
   },
   globalData: {
     userInfo: {},
-    token: null
+    token: 'EbP3IpPtsRHkdAFwb6GLR3fPt2JCSZnF'
   },
   login: function (mobile, password, complete) {
     var that = this

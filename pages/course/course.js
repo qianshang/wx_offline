@@ -1,18 +1,36 @@
 // pages/course/course.js
+const app = getApp();
+var network = require('../../network/network.js');
+var dateUtil = require('../../utils/util.js')
+
+const pageSize = 20
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    futureIsSelected: true
+    courses: [],
+    futureIsSelected: null,
+    isEmpty: false,
+    contentHeight: 500
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          contentHeight: res.windowHeight - res.windowWidth / 750 * 88
+        })
+      }
+    })
+
+    this.onFutureClick()
   },
 
   /**
@@ -71,6 +89,25 @@ Page({
     this.setData({
       futureIsSelected: true
     })
+
+    var that = this
+    wx.showNavigationBarLoading()
+    network.fetchFutureCourses(app.globalData.token, 1, pageSize, (data) => {
+
+      data.rows.map((item) => {
+        item.time = dateUtil.formatTime(new Date(item.startTime))
+      })
+      console.log(data.rows)
+
+      that.setData({
+        courses: data.rows,
+        isEmpty: !(data.rows && data.rows.length > 0)
+      })
+      wx.hideNavigationBarLoading()
+    }, (msg) => {
+      console.log(msg)
+      wx.hideNavigationBarLoading()
+    })
   },
 
   onHistoryClick: function() {
@@ -79,6 +116,24 @@ Page({
     }
     this.setData({
       futureIsSelected: false
+    })
+
+    var that = this
+    wx.showNavigationBarLoading()
+    network.fetchHistoryCourses(app.globalData.token, 1, pageSize, (data) => {
+      data.rows.map((item) => {
+        item.time = dateUtil.formatTime(new Date(item.startTime))
+      })
+
+      console.log(data.rows)
+      that.setData({
+        courses: data.rows,
+        isEmpty: !(data.rows && data.rows.length > 0)
+      })
+      wx.hideNavigationBarLoading()
+    }, (msg) => {
+      console.log(msg)
+      wx.hideNavigationBarLoading()
     })
   }
 })

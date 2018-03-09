@@ -12,17 +12,28 @@ Page({
     isLogining: false,
   },
   onLoad: function () {
-    if (app.globalData.token) {
-      this.setData({
+    var that = this
+    wx.showNavigationBarLoading();
+    app.userInfo(app.globalData.token, () => {
+      that.setData({
         token: app.globalData.token,
+        userInfo: app.globalData.userInfo,
         isLogined: true
       })
-    } else {
-      this.setData({
-        token: null,
-        isLogined: false
-      })
-    }
+      wx.hideNavigationBarLoading()
+    });
+
+    // if (app.globalData.token) {
+    //   this.setData({
+    //     token: app.globalData.token,
+    //     isLogined: true
+    //   })
+    // } else {
+    //   this.setData({
+    //     token: null,
+    //     isLogined: false
+    //   })
+    // }
   },
   onLogin: function () {
     this.setData({

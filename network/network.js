@@ -1,5 +1,5 @@
-// const baseUrl = 'http://api.uskid.tech';
-const baseUrl = 'http://api.uskid.com';
+const baseUrl = 'http://api.uskid.tech';
+// const baseUrl = 'http://api.uskid.com';
 
 function request(url, method, params, success, failure) {
   wx.request({
@@ -34,11 +34,11 @@ function signin(mobile, password, success, failure) {
 }
 
 function getUserInfo(token, success, failure) {
-  request('/m/campus/child/info', 'GET', {'token': token}, success, failure)
+  request('/m/campus/child/info', 'GET', { 'token': token }, success, failure)
 }
 
 function fetchVideos(token, page, pageSize, success, failure) {
-  request('/m/campus/media/videos', 'GET', {'token': token, 'page': page, 'pageSize': pageSize}, success, failure)
+  request('/m/campus/media/videos', 'GET', { 'token': token, 'page': page, 'pageSize': pageSize }, success, failure)
 }
 
 function fetchAudios(token, page, pageSize, success, failure) {
@@ -49,10 +49,20 @@ function fetchArticles(token, page, pageSize, keywords, success, failure) {
   request('/m/campus/media/articles', 'GET', { 'token': token, 'page': page, 'pageSize': pageSize, 'keywords': keywords }, success, failure)
 }
 
+function fetchFutureCourses(token, page, pageSize, success, failure) {
+  request('/m/campus/booking/after', 'GET', { 'token': token, 'page': page, 'pageSize': pageSize }, success, failure)
+}
+
+function fetchHistoryCourses(token, page, pageSize, success, failure) {
+  request('/m/campus/booking/before', 'GET', { 'token': token, 'page': page, 'pageSize': pageSize }, success, failure)
+}
+
 module.exports = {
   login: signin,
   userInfo: getUserInfo,
   fetchVideos: fetchVideos,
   fetchAudios: fetchAudios,
-  fetchArticles: fetchArticles
+  fetchArticles: fetchArticles,
+  fetchFutureCourses: fetchFutureCourses,
+  fetchHistoryCourses: fetchHistoryCourses
 }
