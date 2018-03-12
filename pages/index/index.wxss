@@ -71,3 +71,18 @@ input {
   border-radius: 88rpx;
   font-size: 36rpx;
 }
+
+.interface {
+  width: 750rpx;
+  height: 750rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: space-around;
+  flex-wrap: wrap;
+}
+
+.interface button {
+  width: 335rpx;
+  height: 335rpx;
+}

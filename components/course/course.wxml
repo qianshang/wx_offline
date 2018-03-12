@@ -1,0 +1,21 @@
+<!--components/course/course.wxml-->
+<template name='course'>
+  <view class='course-item-container-history' bindtap=''>
+    <image class='cover' src='{{cover_image}}' mode='aspectFill'></image>
+    <view class='info'>
+      <view class='time'>
+        <text>{{course.time}}</text>
+      </view>
+
+      <view class='avatar'>
+        <image src='http://hq-static.smartstudy.com{{course.avatar}}' mode='aspectFill'></image>
+      </view>
+      <view class='name'>
+        <text>{{course.chapterName}}</text>
+      </view>
+      <view class='chapter'>
+        <text>{{course.chapter}}</text>
+      </view>
+    </view>
+  </view>
+</template>

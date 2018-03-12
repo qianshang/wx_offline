@@ -9,9 +9,12 @@
       </view>
     </view>
 
-    <!-- <navigator url='../course/course' hover-class="navigator-hover">
-      课程
-    </navigator> -->
+    <view class='interface'>
+      <view style='width: 300rpx; height: 300rpx; background-color: red;'></view>
+      <view style='width: 300rpx; height: 300rpx; background-color: red;'></view>
+      <view style='width: 300rpx; height: 300rpx; background-color: red;'></view>
+      <view style='width: 300rpx; height: 300rpx; background-color: red;'></view>
+    </view>
     <button bindtap='bindCourse'>课程</button>
     <button bindtap='bindMediaVideo'>视频</button>
     <button bindtap='bindMediaAudio'>音频</button>
@@ -19,19 +22,16 @@
   </view>
 
   <view wx:else class='login-container'>
-    <image src='../../images/login/login_logo.png' class='login-icon' />
-    <input class='login-mobile' placeholder='请输入手机号码' type='phone' bindinput='bindMobile' value='{{mobile}}' />
-    <input class='login-password' placeholder='请输入密码' password type='text' bindinput='bindPassword' value='{{password}}' />
-
-    <button class='login-submit' type='primary' bindtap='onLogin' loading='{{isLogining}}'>登录</button>
+    <template is='login' />
   </view>
 </view>
 
 
 
-<template name="input">
-  <view>
-    <text> {{index}}: {{msg}} </text>
-    <text> Time: {{time}} </text>
-  </view>
+<template name="login">
+  <image src='../../images/login/login_logo.png' class='login-icon' />
+  <input class='login-mobile' placeholder='请输入手机号码' type='phone' bindinput='bindMobile' value='{{mobile}}' />
+  <input class='login-password' placeholder='请输入密码' password type='text' bindinput='bindPassword' value='{{password}}' />
+
+  <button class='login-submit' type='primary' bindtap='onLogin' loading='{{isLogining}}'>登录</button>
 </template>

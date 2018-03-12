@@ -1,7 +1,8 @@
 // pages/course/course.js
 const app = getApp();
 var network = require('../../network/network.js');
-var dateUtil = require('../../utils/util.js')
+var dateUtil = require('../../utils/util.js');
+var common = require('../../common/common.js')
 
 const pageSize = 20
 
@@ -14,7 +15,15 @@ Page({
     courses: [],
     futureIsSelected: null,
     isEmpty: false,
-    contentHeight: 500
+    contentHeight: 500,
+    courseHistoryBgUrls: [
+      '../../images/course/course_history_bg_yellow.png',
+      '../../images/course/course_history_bg_blue.png',
+      '../../images/course/course_history_bg_green.png'
+    ],
+    avatarPlaceholder: common.avatar,
+    page: 0,
+    isAll: false
   },
 
   /**
@@ -37,71 +46,103 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
 
-  onFutureClick: function() {
+  onFutureClick: function () {
     if (this.data.futureIsSelected) {
       return
     }
     this.setData({
-      futureIsSelected: true
+      futureIsSelected: true,
+      isAll: false
     })
 
+    this.fetchFutureCourses(1)
+  },
+
+  onHistoryClick: function () {
+    if (!this.data.futureIsSelected) {
+      return
+    }
+    this.setData({
+      futureIsSelected: false,
+      isAll: false
+    })
+
+    this.fetchHistoryCourses(1)
+  },
+
+  fetchMoreCourses: function () {
+    if (this.data.isAll) {
+      return
+    }
+    if (this.data.futureIsSelected) {
+      this.fetchFutureCourses(this.data.page + 1)
+    } else {
+
+      this.fetchHistoryCourses(this.data.page + 1)
+    }
+  },
+
+  fetchHistoryCourses: function (p) {
+    this.setData({
+      page: p
+    })
     var that = this
     wx.showNavigationBarLoading()
-    network.fetchFutureCourses(app.globalData.token, 1, pageSize, (data) => {
-
+    network.fetchHistoryCourses(app.globalData.token, p, pageSize, (data) => {
       data.rows.map((item) => {
-        item.time = dateUtil.formatTime(new Date(item.startTime))
+        item.time = dateUtil.mmddeeeHHmmZH_tiestamp(item.startTime)
       })
-      console.log(data.rows)
 
+      console.log(data.rows)
       that.setData({
-        courses: data.rows,
-        isEmpty: !(data.rows && data.rows.length > 0)
+        courses: p <= 1 ? data.rows : that.data.courses.concat(data.rows),
+        isEmpty: p <=1 && !(data.rows && data.rows.length > 0),
+        isAll: data.rows.length < pageSize
       })
       wx.hideNavigationBarLoading()
     }, (msg) => {
@@ -110,25 +151,24 @@ Page({
     })
   },
 
-  onHistoryClick: function() {
-    if (!this.data.futureIsSelected) {
-      return
-    }
+  fetchFutureCourses: function (p) {
     this.setData({
-      futureIsSelected: false
+      page: p
     })
 
     var that = this
     wx.showNavigationBarLoading()
-    network.fetchHistoryCourses(app.globalData.token, 1, pageSize, (data) => {
-      data.rows.map((item) => {
-        item.time = dateUtil.formatTime(new Date(item.startTime))
-      })
+    network.fetchFutureCourses(app.globalData.token, p, pageSize, (data) => {
 
+      data.rows.map((item) => {
+        item.time = dateUtil.mmddeeeHHmmZH_tiestamp(item.startTime)
+      })
       console.log(data.rows)
+
       that.setData({
-        courses: data.rows,
-        isEmpty: !(data.rows && data.rows.length > 0)
+        courses: p <= 1 ? data.rows : that.data.courses.concat(data.rows),
+        isEmpty: p <= 1 && !(data.rows && data.rows.length > 0),
+        isAll: data.rows.length < pageSize
       })
       wx.hideNavigationBarLoading()
     }, (msg) => {

@@ -1,4 +1,6 @@
 /* pages/course/course.wxss */
+@import "../../components/course/course.wxss";
+
 .course-menu {
   width: 750rpx;
   height: 88rpx;
@@ -22,8 +24,8 @@
   align-items: center;
 }
 
-.course-item {
-  width: 750rpx;
+.course-empty {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
