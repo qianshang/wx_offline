@@ -12,16 +12,17 @@ Page({
     isLogining: false,
   },
   onLoad: function () {
-    var that = this
-    wx.showNavigationBarLoading();
-    app.userInfo(app.globalData.token, () => {
-      that.setData({
-        token: app.globalData.token,
-        userInfo: app.globalData.userInfo,
-        isLogined: true
-      })
-      wx.hideNavigationBarLoading()
-    });
+    this.onLogin()
+    // var that = this
+    // wx.showNavigationBarLoading();
+    // app.userInfo(app.globalData.token, () => {
+    //   that.setData({
+    //     token: app.globalData.token,
+    //     userInfo: app.globalData.userInfo,
+    //     isLogined: true
+    //   })
+    //   wx.hideNavigationBarLoading()
+    // });
 
     // if (app.globalData.token) {
     //   this.setData({

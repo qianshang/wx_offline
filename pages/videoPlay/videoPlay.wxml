@@ -1,0 +1,3 @@
+<!--pages/videoPlay/videoPlay.wxml-->
+
+<video src='{{video}}' style='width: 750rpx; height: 421.875rpx;' autoplay></video>

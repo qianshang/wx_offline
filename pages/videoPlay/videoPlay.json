@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "视频",
+  "disableScroll": true,
   "enablePullDownRefresh": false
 }

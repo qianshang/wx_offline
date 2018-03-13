@@ -1,0 +1,50 @@
+<!--pages/courseInfo/courseInfo.wxml-->
+
+<scroll-view style='width: 750rpx; height: {{contentHeight}}px' scroll-y='true'>
+  <!-- 媒体 -->
+   <swiper class='chapter-medias' indicator-dots wx:if='{{previews}}'>
+  <block wx:for="{{previews}}">
+    <swiper-item>
+      <view class='video' wx:if='{{item.type === 1}}'>
+        <image src='../../images/placeholder/video_placeholder.png' class='video-image' bindtap='playVideo' data-url='{{item.link}}' />
+      </view>
+      <view class='audio' wx:elif='{{item.type === 2}}'>
+        这是个音频
+      </view>
+    </swiper-item>
+  </block>
+</swiper> 
+
+  <!-- 章节信息 -->
+  <view class='chapter-info'>
+    <image class='cover' src='../../images/course/course_info_background.png' mode='aspectFill'></image>
+    <view class='chapter'>
+      <text style='color: #00EEFF;'>章节: </text>
+      <text>{{chapter}}</text>
+    </view>
+    <view class='time'>
+      <text style='color: #FE4B28;'>上课时间: </text>
+      <text>{{startTime}}</text>
+    </view>
+    <view class='target'>
+      <text style='color: #F4C744;'>目标: </text>
+      <text>就一段话嘛？</text>
+    </view>
+  </view>
+
+  <!-- 词汇 -->
+  <view class='words' wx:if='{{words}}'>
+    <view class='title'>词汇</view>
+    <view class='content'>
+      <view wx:for='{{words}}' class='word'>{{item}}</view>
+    </view>
+  </view>
+
+  <!-- 句型 -->
+  <view class='words' wx:if='{{sentences}}'>
+    <view class='title'>句型</view>
+    <view class='content'>
+      <view wx:for='{{sentences}}' class='word'>{{item}}</view>
+    </view>
+  </view>
+</scroll-view>

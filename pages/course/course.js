@@ -175,5 +175,15 @@ Page({
       console.log(msg)
       wx.hideNavigationBarLoading()
     })
+  },
+
+  showCourseInfo: function(e) {
+    var id = e.currentTarget.dataset.id
+    var chapter = e.currentTarget.dataset.chapter
+    var startTime = dateUtil.mmddeeeHHmmZH_tiestamp(e.currentTarget.dataset.time)
+    console.log(e)
+    wx.navigateTo({
+      url: `../courseInfo/courseInfo?id=${id}&chapter=${chapter}&starttime=${startTime}`,
+    })
   }
 })

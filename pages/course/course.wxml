@@ -13,7 +13,7 @@
     </view>
     <view wx:else>
       <block wx:for="{{courses}}" wx:for-item="course">
-        <template is="course" data="{{course: course, cover_image: courseHistoryBgUrls[index % 3]}}" />
+        <template is="course" data="{{course: course, cover_image: courseHistoryBgUrls[index % 3]}}"/>
       </block>
     </view>
   </scroll-view>

@@ -1,0 +1,74 @@
+/* pages/courseInfo/courseInfo.wxss */
+
+.chapter-medias {
+  width: 750rpx;
+  height: 400rpx;
+  background-color: lightgray;
+}
+
+.chapter-medias .video {
+  width: 700rpx;
+  height: 393.75rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chapter-medias .video .video-image {
+  width: 456rpx;
+  height: 264rpx;
+}
+
+.chapter-info {
+  width: 710rpx;
+  height: 246rpx;
+  margin: 20rpx;
+}
+
+.chapter-info .cover {
+  width: 710rpx;
+  height: 246rpx;
+  vertical-align: bottom;
+  background-position: center center;
+}
+
+.chapter-info view {
+  font-size: 30rpx;
+  color: white;
+  position: relative;
+  left: 40rpx;
+}
+
+.chapter-info .chapter {
+  top: -200rpx;
+}
+
+.chapter-info .time {
+  top: -180rpx;
+}
+
+.chapter-info .target {
+  top: -160rpx;
+}
+
+.words {
+  width: 710rpx;
+  padding: 20rpx;
+  font-size: 30rpx;
+  color: black;
+}
+
+.words .content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.words .content .word {
+  border-width: 40rpx;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+  padding: 20rpx;
+  background-color: red;
+  border-radius: 20rpx;
+}

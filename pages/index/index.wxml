@@ -10,18 +10,25 @@
     </view>
 
     <view class='interface'>
-      <view style='width: 300rpx; height: 300rpx; background-color: red;'></view>
-      <view style='width: 300rpx; height: 300rpx; background-color: red;'></view>
-      <view style='width: 300rpx; height: 300rpx; background-color: red;'></view>
-      <view style='width: 300rpx; height: 300rpx; background-color: red;'></view>
+      <!-- 课程 -->
+      <view class='top-left' bindtap='bindCourse'>课程</view>
+      <!-- 文章 -->
+      <view class='top-right' bindtap='bindArticles'>文章</view>
+      <!-- 视频 -->
+      <view class='bottom-left' bindtap='bindMediaVideo'>视频</view>
+      <!-- 音频 -->
+      <view class='bottom-right' bindtap='bindMediaAudio'>音频</view>
     </view>
-    <button bindtap='bindCourse'>课程</button>
-    <button bindtap='bindMediaVideo'>视频</button>
-    <button bindtap='bindMediaAudio'>音频</button>
-    <button bindtap='bindArticles'>文章</button>
+
+    <view class='nav'>
+      <navigator url='../course/course'>课程</navigator>
+      <navigator url='../articles/articles'>文章</navigator>
+      <navigator url='../video/video'>视频</navigator>
+      <navigator url='../audio/audio'>音频</navigator>
+    </view>
   </view>
 
-  <view wx:else class='login-container'>
+  <view wx:else class='container-login'>
     <template is='login' />
   </view>
 </view>

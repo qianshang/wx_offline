@@ -1,6 +1,6 @@
 <!--components/course/course.wxml-->
 <template name='course'>
-  <view class='course-item-container-history' bindtap=''>
+  <view class='course-item-container-history' bindtap='showCourseInfo' data-id='{{course.bookingId}}' data-chapter='{{course.chapter}}' data-time='{{course.startTime}}'>
     <image class='cover' src='{{cover_image}}' mode='aspectFill'></image>
     <view class='info'>
       <view class='time'>

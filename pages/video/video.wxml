@@ -1,8 +1,13 @@
 <!--pages/video/video.wxml-->
-<view wx:for="{{videos}}">
-  <view class='video-container'>
-    <video src='{{item.url}}' style='width: 100%;'></video>
-    <text class='video-name'>{{item.name}}</text>
-    <text class='video-description'>{{item.description}}</text>
-  </view>
-</view>
+
+<swiper previous-margin='20rpx' next-margin='20rpx'>
+  <block wx:for="{{videos}}">
+    <swiper-item>
+      <view class='video-container'>
+        <image src='../../images/placeholder/video_placeholder.png' class='video-image' bindtap='playVideo' data-url='{{item.url}}' />
+        <text class='video-name'>{{item.name}}</text>
+        <text class='video-description'>{{item.description}}</text>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>

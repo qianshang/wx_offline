@@ -6,7 +6,9 @@
     "pages/audio/audio",
     "pages/video/video",
     "pages/articles/articles",
-    "pages/web/web"
+    "pages/web/web",
+    "pages/videoPlay/videoPlay",
+    "pages/courseInfo/courseInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

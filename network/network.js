@@ -25,16 +25,33 @@ function request(url, method, params, success, failure) {
   })
 }
 
+function fetchCampus(mobile, success, failure) {
+  request("/m/campus/parent/campus", 'GET', { "phone": mobile }, (data) => {
+    var campusId = data[0].campusId
+    if (campusId) {
+      success(campusId)
+    } else (
+      failure('error')
+    )
+  }, failure)
+}
+
 function signin(mobile, password, success, failure) {
-  request('/m/campus/parent/login', 'POST', {
-    'phone': mobile,
-    'password': password,
-    'campusId': '20'
-  }, success, failure)
+  fetchCampus(mobile, (campusId) => {
+    request('/m/campus/parent/login', 'POST', {
+      'phone': mobile,
+      'password': password,
+      'campusId': campusId
+    }, success, failure)
+  }, failure)
 }
 
 function getUserInfo(token, success, failure) {
   request('/m/campus/child/info', 'GET', { 'token': token }, success, failure)
+}
+
+function getCourseInfo(token, id, success, failure) {
+  request('/m/campus/booking/info', 'GET', { 'token': token, 'bookingId': id }, success, failure)
 }
 
 function fetchVideos(token, page, pageSize, success, failure) {
@@ -64,5 +81,6 @@ module.exports = {
   fetchAudios: fetchAudios,
   fetchArticles: fetchArticles,
   fetchFutureCourses: fetchFutureCourses,
-  fetchHistoryCourses: fetchHistoryCourses
+  fetchHistoryCourses: fetchHistoryCourses,
+  getCourseInfo: getCourseInfo
 }
