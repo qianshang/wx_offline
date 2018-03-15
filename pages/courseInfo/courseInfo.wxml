@@ -1,19 +1,23 @@
 <!--pages/courseInfo/courseInfo.wxml-->
 
-<scroll-view style='width: 750rpx; height: {{contentHeight}}px' scroll-y='true'>
+<scroll-view scroll-y='true'>
   <!-- 媒体 -->
-   <swiper class='chapter-medias' indicator-dots wx:if='{{previews}}'>
-  <block wx:for="{{previews}}">
-    <swiper-item>
-      <view class='video' wx:if='{{item.type === 1}}'>
-        <image src='../../images/placeholder/video_placeholder.png' class='video-image' bindtap='playVideo' data-url='{{item.link}}' />
-      </view>
-      <view class='audio' wx:elif='{{item.type === 2}}'>
-        这是个音频
-      </view>
-    </swiper-item>
-  </block>
-</swiper> 
+  <swiper class='chapter-medias' indicator-dots wx:if='{{previews}}' previous-margin='100rpx' next-margin='100rpx'>
+    <block wx:for="{{previews}}">
+      <swiper-item>
+        <view class='media-container'>
+          <view class='video' wx:if='{{item.type === 1}}'>
+            <image src='../../images/placeholder/video_placeholder.png' class='video-image' bindtap='playVideo' data-url='{{item.link}}' />
+          </view>
+          <view class='audio' wx:elif='{{item.type === 2}}'>
+            <image class='trumpet' src='../../images/course/course_audio_flag.png' style='width: 156rpx; height: 156rpx;' mode='aspectFit' />
+            <image class='control' src="../../images/course/course_audio_{{item.link === playing ?'pause':'play'}}.png" style='width: 88rpx; height: 88rpx;' mode='aspectFit' bindtap='audioPlay' data-url='{{item.link}}' />
+            <text class='progress' wx:if='{{item.link === playing}}'>{{progress}}</text>
+          </view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
 
   <!-- 章节信息 -->
   <view class='chapter-info'>

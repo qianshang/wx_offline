@@ -16,7 +16,7 @@ const mmddeeeHHmmZH = date => {
   const hour = date.getHours()
   const minute = date.getMinutes()
 
-  return month.toString() + '月' + day.toString() + '日' + '('+ week +') ' + [hour, minute].map(formatNumber).join(':')
+  return month.toString() + '月' + day.toString() + '日' + '(' + week + ') ' + [hour, minute].map(formatNumber).join(':')
 }
 
 const mmddeeeHHmmZH_tiestamp = n => {
@@ -30,15 +30,23 @@ const getWeekDay = date => {
   return weekDays[date.getDay()]
 }
 
-const weekDays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" ]
+const weekDays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
 
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
 
+const time = n => {
+  if (!isNaN(n)) {
+    return [parseInt(n / 60), parseInt(n % 60)].map(formatNumber).join(':')
+  }
+  return '--:--'
+}
+
 module.exports = {
   formatTime: formatTime,
   mmddeeeHHmmZH: mmddeeeHHmmZH,
-  mmddeeeHHmmZH_tiestamp: mmddeeeHHmmZH_tiestamp
+  mmddeeeHHmmZH_tiestamp: mmddeeeHHmmZH_tiestamp,
+  time: time
 }

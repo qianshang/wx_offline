@@ -1,6 +1,10 @@
 // pages/courseInfo/courseInfo.js
 const app = getApp()
 var network = require('../../network/network.js')
+var util = require('../../utils/util.js')
+
+const audioContext = wx.createInnerAudioContext()
+
 
 Page({
 
@@ -14,7 +18,8 @@ Page({
     words: [],
     sentences: [],
     previews: [],
-    contentHeight: 500
+    playing: '',
+    progress: ''
   },
 
   /**
@@ -25,16 +30,6 @@ Page({
       id: options.id,
       chapter: options.chapter,
       startTime: options.starttime
-    })
-
-    var that = this
-    wx.getSystemInfo({
-      success: function (res) {
-        console.log(res)
-        that.setData({
-          contentHeight: res.windowHeight
-        })
-      }
     })
 
     wx.setNavigationBarTitle({
@@ -101,8 +96,8 @@ Page({
       var sentences = []
       var previews = []
       info.lessons.forEach(function (element) {
-        words = words.concat(element.words);
-        sentences = sentences.concat(element.sentence);
+        words = words.concat(element.words.filter(that.checkString));
+        sentences = sentences.concat(element.sentence.filter(that.checkString));
         previews = previews.concat(element.previewVideo)
       });
       console.log(previews)
@@ -124,5 +119,44 @@ Page({
     wx.navigateTo({
       url: `../videoPlay/videoPlay?url=${url}`,
     })
+  },
+
+  audioPlay: function (e) {
+    var url = e.currentTarget.dataset.url
+
+    if (this.data.playing === url) {
+      audioContext.stop()
+      this.setData({
+        playing: ''
+      })
+    } else {
+      audioContext.src = url
+      var that = this
+      audioContext.onTimeUpdate((e) => {
+
+        that.setData({
+          progress: util.time(audioContext.currentTime) + '/' + util.time(audioContext.duration)
+        })
+      })
+      audioContext.onPlay(() => {
+        console.log('play')
+      })
+      audioContext.onEnded(() => {
+        that.setData({
+          playing: '',
+          progress: ''
+        })
+      })
+
+      audioContext.play()
+      this.setData({
+        playing: url
+      })
+    }
+  },
+
+  checkString: function(e) {
+    return !(e === undefined || e.trim() === "")
   }
+
 })
